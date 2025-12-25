@@ -87,6 +87,15 @@
             letter-spacing: 2px;
         }
 
+        .site-subtitle {
+            font-size: 20px;
+            color: #b8b8d8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
         nav {
             display: flex;
             gap: 25px;
@@ -142,7 +151,7 @@
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(40px, 6vw, 80px);
+            font-size: clamp(32px, 4vw, 56px);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 30px;
@@ -291,9 +300,9 @@
             background: linear-gradient(135deg, rgba(255, 0, 180, 0.2), rgba(0, 230, 255, 0.2));
             border: 1px solid rgba(255, 0, 180, 0.4);
             color: #e8e8f0;
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 4px;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -507,7 +516,10 @@
 <header>
     <div class="container">
         <div class="header-content">
-            <div class="site-title">ZAIN NEMATI</div>
+            <div>
+                <div class="site-title">ZAIN NEMATI</div>
+                <div class="site-subtitle">Data Engineer</div>
+            </div>
             <nav>
                 <a href="#about" class="nav-link active" data-page="about">About</a>
                 <a href="#experience" class="nav-link" data-page="experience">Experience</a>
@@ -613,6 +625,9 @@
                             <span class="tech-tag">S3</span>
                             <span class="tech-tag">GCS</span>
                             <span class="tech-tag">Rudderstack</span>
+                            <span class="tech-tag">Snowplow</span>
+                            <span class="tech-tag">MinIO</span>
+                            <span class="tech-tag">Apache Iceberg</span>
                             <span class="tech-tag">DuckDB</span>
                             <span class="tech-tag">Firebase</span>
                             <span class="tech-tag">MongoDB</span>
@@ -644,14 +659,6 @@
                             <span class="tech-tag">Helm</span>
                             <span class="tech-tag">Elastic Search</span>
                             <span class="tech-tag">CloudWatch</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-card">
-                        <h3>Other Technologies</h3>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Appium</span>
-                            <span class="tech-tag">Genymotion</span>
                         </div>
                     </div>
                 </div>
@@ -725,8 +732,9 @@
             <h2>LET'S CONNECT</h2>
             <div class="content-box">
                 <p>
-                    Based in Utrecht, Netherlands. Always up for discussing data engineering challenges, exploring collaboration
-                    opportunities, grabbing coffee, going for a run, or talking football with a fellow Arsenal fan.
+                    Based in Utrecht. Always up for a chat about data engineering, grabbing a coffee, going for a run,
+                    or just kicking back and talking football. Love meeting new people and swapping ideas, whether it's
+                    about tech, sports, or random stuff in between.
                 </p>
             </div>
 
