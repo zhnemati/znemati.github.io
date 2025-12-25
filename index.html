@@ -41,10 +41,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(77, 159, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+            background:
+                    radial-gradient(circle at 20% 20%, rgba(77, 159, 255, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
             animation: gradientShift 15s ease infinite;
             z-index: -1;
         }
@@ -71,14 +71,13 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 60px;
         }
 
         /* Header with glass morphism */
         header {
             position: sticky;
             top: 0;
-            padding: 24px 0;
             backdrop-filter: blur(12px);
             background: rgba(10, 10, 15, 0.7);
             border-bottom: 1px solid var(--border);
@@ -95,11 +94,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
+            padding: 24px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            nav {
+                gap: 24px;
+            }
         }
 
         .site-title {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text;
@@ -116,7 +129,7 @@
 
         nav {
             display: flex;
-            gap: 48px;
+            gap: 32px;
             animation: fadeIn 0.8s ease 0.4s backwards;
         }
 
@@ -489,22 +502,16 @@
         /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 0 24px;
-            }
-
-            header {
-                padding: 20px 0;
+                padding: 0 32px;
             }
 
             .header-content {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
+                padding: 20px 0;
             }
 
             nav {
-                gap: 24px;
-                font-size: 14px;
+                gap: 20px;
+                font-size: 13px;
             }
 
             .hero {
@@ -538,6 +545,25 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .header-content {
+                padding: 20px 0;
+            }
+
+            .site-title {
+                font-size: 26px;
+            }
+
+            nav {
+                gap: 16px;
+                font-size: 12px;
+            }
+        }
+
         /* Scroll reveal animations */
         .reveal {
             opacity: 0;
@@ -552,395 +578,340 @@
     </style>
 </head>
 <body>
+<header>
     <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="site-title">Zain Nemati</div>
-                <nav>
-                    <a href="#about" class="nav-link active" data-page="about">About</a>
-                    <!-- <a href="#projects" class="nav-link" data-page="projects">Projects</a> -->
-                    <a href="#experience" class="nav-link" data-page="experience">Experience</a>
-                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
-                </nav>
-            </div>
-        </header>
+        <div class="header-content">
+            <div class="site-title">Zain Nemati</div>
+            <nav>
+                <a href="#about" class="nav-link active" data-page="about">About</a>
+                <a href="#experience" class="nav-link" data-page="experience">Experience</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+</header>
 
-        <main>
-            <!-- About Page -->
-            <div id="about" class="page active">
-                <section class="hero">
-                    <h1>
-                        Building <span class="gradient-text">Data Systems</span><br>
-                        That Actually Work
-                    </h1>
-                    <p class="hero-subtitle">
-                        Data Engineer focused on building reliable, scalable systems that solve real problems.
-                        Six years of experience turning messy data challenges into working solutions using
-                        streaming platforms, cloud infrastructure, and modern data tools.
-                    </p>
-                    <div class="hero-cta">
-                        <!-- <a href="#projects" class="btn btn-primary nav-link" data-page="projects">View My Work</a> -->
-                        <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">Get In Touch</a>
-                    </div>
-                </section>
+<div class="container">
 
-                <section class="reveal">
-                    <h2>About Me</h2>
-                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px;">
-                        I enjoy figuring things out. Not in a dramatic way, just the simple satisfaction of taking
-                        something unclear and slowly making sense of it. That mindset shows up in my work, in my
-                        interests, and in how I approach problems in general.
-                    </p>
-                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
-                        Most days outside of work revolve around staying active. I spend a lot of time at the gym,
-                        I run, and I go out on long road bike rides when I can. Football has always been a big part
-                        of my life, and I genuinely enjoy watching and analyzing the game. I am a lifelong Arsenal
-                        fan, which means I have learned to stay patient, optimistic, and slightly stubborn.
-                    </p>
-                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
-                        I work as a Data Engineer at bol.com, one of the largest e-commerce platforms in the Benelux.
-                        Over the last six years, I have worked on building data systems that need to scale, stay
-                        reliable, and actually be usable by real people. I am comfortable working with vague problems
-                        and helping turn them into something concrete, even when the direction is not fully clear from
-                        the start.
-                    </p>
-                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
-                        People I work with often describe me as pragmatic, someone who focuses on getting things done
-                        and keeping momentum. I am approachable, open minded, and easy to collaborate with, especially
-                        when things move fast. I enjoy being part of high paced, high stake teams and projects, where
-                        decisions matter and progress is visible. I care about quality, but I also care about keeping
-                        things practical and moving forward.
-                    </p>
-                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
-                        I am always trying to get a little better at what I do, whether that is technically or in how
-                        I work with others. I like building things that last, working with people I respect, and staying
-                        focused on what actually matters.
-                    </p>
-                </section>
+    <main>
+        <!-- About Page -->
+        <div id="about" class="page active">
+            <section class="hero">
+                <h1>
+                    Building <span class="gradient-text">Data Systems</span><br>
+                    That Actually Work
+                </h1>
+                <p class="hero-subtitle">
+                    Data Engineer focused on building reliable, scalable systems that solve real problems.
+                    Six years of experience turning messy data challenges into working solutions using
+                    streaming platforms, cloud infrastructure, and modern data tools.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">Get In Touch</a>
+                </div>
+            </section>
 
-                <section class="reveal" style="margin-top: 120px;">
-                    <h2>Skills & Technologies</h2>
+            <section class="reveal">
+                <h2>About Me</h2>
+                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px;">
+                    I enjoy figuring things out. Not in a dramatic way, just the simple satisfaction of taking
+                    something unclear and slowly making sense of it. That mindset shows up in my work, in my
+                    interests, and in how I approach problems in general.
+                </p>
+                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
+                    Most days outside of work revolve around staying active. I spend a lot of time at the gym,
+                    I run, and I go out on long road bike rides when I can. Football has always been a big part
+                    of my life, and I genuinely enjoy watching and analyzing the game. I am a lifelong Arsenal
+                    fan, which means I have learned to stay patient, optimistic, and slightly stubborn.
+                </p>
+                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
+                    I work as a Data Engineer at bol.com, one of the largest e-commerce platforms in the Benelux.
+                    Over the last six years, I have worked on building data systems that need to scale, stay
+                    reliable, and actually be usable by real people. I am comfortable working with vague problems
+                    and helping turn them into something concrete, even when the direction is not fully clear from
+                    the start.
+                </p>
+                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
+                    People I work with often describe me as pragmatic, someone who focuses on getting things done
+                    and keeping momentum. I am approachable, open minded, and easy to collaborate with, especially
+                    when things move fast. I enjoy being part of high paced, high stake teams and projects, where
+                    decisions matter and progress is visible. I care about quality, but I also care about keeping
+                    things practical and moving forward.
+                </p>
+                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
+                    I am always trying to get a little better at what I do, whether that is technically or in how
+                    I work with others. I like building things that last, working with people I respect, and staying
+                    focused on what actually matters.
+                </p>
+            </section>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px;">
-                        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Languages/Frameworks</h3>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">Kotlin</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Spring Boot</span>
-                            </div>
-                        </div>
+            <section class="reveal" style="margin-top: 120px;">
+                <h2>Skills & Technologies</h2>
 
-                        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Data Streaming Frameworks</h3>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <span class="tech-tag">Kafka</span>
-                                <span class="tech-tag">PubSub</span>
-                                <span class="tech-tag">Apache Flink</span>
-                                <span class="tech-tag">Dataflow</span>
-                                <span class="tech-tag">Apache Beam</span>
-                                <span class="tech-tag">Spark Streaming</span>
-                                <span class="tech-tag">AWS Kinesis</span>
-                                <span class="tech-tag">Lambda</span>
-                                <span class="tech-tag">Amazon EMR</span>
-                                <span class="tech-tag">MSK</span>
-                                <span class="tech-tag">Confluent Cloud</span>
-                            </div>
-                        </div>
-
-                        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Datawarehouse and Cloud Platforms</h3>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <span class="tech-tag">BigQuery</span>
-                                <span class="tech-tag">Redshift</span>
-                                <span class="tech-tag">Snowflake</span>
-                                <span class="tech-tag">S3</span>
-                                <span class="tech-tag">GCS</span>
-                                <span class="tech-tag">Rudderstack</span>
-                                <span class="tech-tag">Confluent Cloud</span>
-                                <span class="tech-tag">Datastage</span>
-                                <span class="tech-tag">Unica</span>
-                                <span class="tech-tag">DuckDB</span>
-                                <span class="tech-tag">Firebase</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Vertex AI</span>
-                                <span class="tech-tag">Gemini Enterprise</span>
-                                <span class="tech-tag">Vector Embeddings and Search</span>
-                            </div>
-                        </div>
-
-                        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Batch Frameworks and Orchestration</h3>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <span class="tech-tag">Dbt</span>
-                                <span class="tech-tag">Great Expectations</span>
-                                <span class="tech-tag">Airflow</span>
-                                <span class="tech-tag">Argo</span>
-                                <span class="tech-tag">Dataframes</span>
-                                <span class="tech-tag">Spark</span>
-                            </div>
-                        </div>
-
-                        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">DevOps/MLOps</h3>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <span class="tech-tag">Grafana</span>
-                                <span class="tech-tag">Kubernetes</span>
-                                <span class="tech-tag">Docker</span>
-                                <span class="tech-tag">Rancher</span>
-                                <span class="tech-tag">Terraform</span>
-                                <span class="tech-tag">Bash</span>
-                                <span class="tech-tag">Helm</span>
-                                <span class="tech-tag">Elastic Search</span>
-                                <span class="tech-tag">CloudWatch</span>
-                            </div>
-                        </div>
-
-                        <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
-                            <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Other Technologies</h3>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <span class="tech-tag">Appium</span>
-                                <span class="tech-tag">Genymotion</span>
-                                <span class="tech-tag">Great Expectations</span>
-                            </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Languages/Frameworks</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Kotlin</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Spring Boot</span>
                         </div>
                     </div>
-                </section>
-            </div>
 
-            <!-- Projects Page -->
-            <!-- <div id="projects" class="page">
-                <h2>Featured Projects</h2>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Data Streaming Frameworks</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">PubSub</span>
+                            <span class="tech-tag">Apache Flink</span>
+                            <span class="tech-tag">Dataflow</span>
+                            <span class="tech-tag">Apache Beam</span>
+                            <span class="tech-tag">Spark Streaming</span>
+                            <span class="tech-tag">AWS Kinesis</span>
+                            <span class="tech-tag">Lambda</span>
+                            <span class="tech-tag">Amazon EMR</span>
+                            <span class="tech-tag">MSK</span>
+                            <span class="tech-tag">Confluent Cloud</span>
+                        </div>
+                    </div>
 
-                <div class="project-grid">
-                    <div class="project-card reveal">
-                        <span class="project-number">01</span>
-                        <h3>Marketing Analytics Platform</h3>
-                        <p>
-                            Engineered a comprehensive marketing channel attribution system leveraging
-                            BigQuery views with intelligent result caching. Achieved 70% query performance
-                            improvement while maintaining granular expense tracking across diverse data sources.
-                        </p>
-                        <div class="tech-stack">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Datawarehouse and Cloud Platforms</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                             <span class="tech-tag">BigQuery</span>
-                            <span class="tech-tag">dbt</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Data Modeling</span>
+                            <span class="tech-tag">Redshift</span>
+                            <span class="tech-tag">Snowflake</span>
+                            <span class="tech-tag">S3</span>
+                            <span class="tech-tag">GCS</span>
+                            <span class="tech-tag">Rudderstack</span>
+                            <span class="tech-tag">Confluent Cloud</span>
+                            <span class="tech-tag">Datastage</span>
+                            <span class="tech-tag">Unica</span>
+                            <span class="tech-tag">DuckDB</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Vertex AI</span>
+                            <span class="tech-tag">Gemini Enterprise</span>
+                            <span class="tech-tag">Vector Embeddings and Search</span>
                         </div>
                     </div>
 
-                    <div class="project-card reveal">
-                        <span class="project-number">02</span>
-                        <h3>Real-time Data Pipeline</h3>
-                        <p>
-                            Architected and deployed a high-throughput streaming pipeline processing
-                            10M+ events daily. Reduced end-to-end latency by 60% through strategic
-                            microservices design and advanced caching strategies.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Apache Kafka</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card reveal">
-                        <span class="project-number">03</span>
-                        <h3>Data Quality Framework</h3>
-                        <p>
-                            Developed an intelligent data quality monitoring system with automated
-                            anomaly detection and real-time alerting. Reduced data incidents by 85%
-                            and improved cross-team data reliability organization-wide.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Batch Frameworks and Orchestration</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span class="tech-tag">Dbt</span>
                             <span class="tech-tag">Great Expectations</span>
                             <span class="tech-tag">Airflow</span>
-                            <span class="tech-tag">Slack API</span>
+                            <span class="tech-tag">Argo</span>
+                            <span class="tech-tag">Dataframes</span>
+                            <span class="tech-tag">Spark</span>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">DevOps/MLOps</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span class="tech-tag">Grafana</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Rancher</span>
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">Bash</span>
+                            <span class="tech-tag">Helm</span>
+                            <span class="tech-tag">Elastic Search</span>
+                            <span class="tech-tag">CloudWatch</span>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px;">
+                        <h3 style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--accent-blue);">Other Technologies</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span class="tech-tag">Appium</span>
+                            <span class="tech-tag">Genymotion</span>
+                            <span class="tech-tag">Great Expectations</span>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </section>
+        </div>
 
-            <!-- Experience Page -->
-            <div id="experience" class="page">
-                <h2>Experience</h2>
+        <!-- Experience Page -->
+        <div id="experience" class="page">
+            <h2>Experience</h2>
 
-                <div class="experience-timeline">
-                    <div class="experience-item reveal">
-                        <h3>Senior Data Engineer</h3>
-                        <div class="experience-meta">Bol • Apr 2023 - Present</div>
-                        <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
-                            <li>Develop and maintain Bol.com's advanced analytics suite tracking customer and partner interactions in real-time, processing 2B events and 10M visits daily at 70,000 events per second</li>
-                            <li>Build and maintain real-time ingestion and enrichment pipelines using Apache Flink, Java, Kafka, and BigQuery for comprehensive platform insights</li>
-                            <li>Implement batch jobs for dataset cleansing, PII masking, and compliance checks using Airflow, Python, DBT, and BigQuery</li>
-                            <li>Develop diagnostic tools and SDKs in Kotlin and Java to streamline debugging and standardize data production across services</li>
-                            <li>Collaborate with cross-functional teams on engineering challenges including module integration, core functionality rearchitecting, scalability improvements, and architectural decisions to ensure platform resilience</li>
-                        </ul>
-                    </div>
+            <div class="experience-timeline">
+                <div class="experience-item reveal">
+                    <h3>Senior Data Engineer</h3>
+                    <div class="experience-meta">Bol • Apr 2023 - Present</div>
+                    <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
+                        <li>Develop and maintain Bol.com's advanced analytics suite tracking customer and partner interactions in real-time, processing 2B events and 10M visits daily at 70,000 events per second</li>
+                        <li>Build and maintain real-time ingestion and enrichment pipelines using Apache Flink, Java, Kafka, and BigQuery for comprehensive platform insights</li>
+                        <li>Implement batch jobs for dataset cleansing, PII masking, and compliance checks using Airflow, Python, DBT, and BigQuery</li>
+                        <li>Develop diagnostic tools and SDKs in Kotlin and Java to streamline debugging and standardize data production across services</li>
+                        <li>Collaborate with cross-functional teams on engineering challenges including module integration, core functionality rearchitecting, scalability improvements, and architectural decisions to ensure platform resilience</li>
+                    </ul>
+                </div>
 
-                    <div class="experience-item reveal">
-                        <h3>Senior Data Engineer</h3>
-                        <div class="experience-meta">Retailo Technologies • Oct 2022 - Jan 2023</div>
-                        <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
-                            <li>Built and managed a high-performing team of 2 data engineers, delivering seven production data pipelines in 5 months</li>
-                            <li>Optimized AWS infrastructure costs by 30% without impacting data pipeline performance or processes</li>
-                            <li>Collaborated with product owners on new requirements, managing data infrastructure and building data pipelines with ~98% data consistency</li>
-                        </ul>
-                    </div>
+                <div class="experience-item reveal">
+                    <h3>Senior Data Engineer</h3>
+                    <div class="experience-meta">Retailo Technologies • Oct 2022 - Jan 2023</div>
+                    <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
+                        <li>Built and managed a high-performing team of 2 data engineers, delivering seven production data pipelines in 5 months</li>
+                        <li>Optimized AWS infrastructure costs by 30% without impacting data pipeline performance or processes</li>
+                        <li>Collaborated with product owners on new requirements, managing data infrastructure and building data pipelines with ~98% data consistency</li>
+                    </ul>
+                </div>
 
-                    <div class="experience-item reveal">
-                        <h3>Data Engineer</h3>
-                        <div class="experience-meta">Retailo Technologies • Sep 2021 - Sep 2022</div>
-                        <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
-                            <li>Spearheaded an end-to-end streaming architecture using Apache Flink and Apache Kafka, enabling business users to track agent locations and reducing logistics costs by 10%</li>
-                            <li>Implemented a real-time pricing trigger that notified users of real-time changes in buy prices</li>
-                            <li>Laid the foundation of a data scraping framework leveraging Appium, Genymotion, and Argo workflows, reducing 15 hours of manual work and increasing GMV by 10%</li>
-                            <li>Architected a real-time streaming pipeline that filters backend application logs, enabling the team to identify up to 50 bots</li>
-                            <li>Developed batch jobs written in Python, integrated with partner REST APIs, and scheduled via Argo workflows, successfully deploying seven pipelines to production</li>
-                        </ul>
-                    </div>
+                <div class="experience-item reveal">
+                    <h3>Data Engineer</h3>
+                    <div class="experience-meta">Retailo Technologies • Sep 2021 - Sep 2022</div>
+                    <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
+                        <li>Spearheaded an end-to-end streaming architecture using Apache Flink and Apache Kafka, enabling business users to track agent locations and reducing logistics costs by 10%</li>
+                        <li>Implemented a real-time pricing trigger that notified users of real-time changes in buy prices</li>
+                        <li>Laid the foundation of a data scraping framework leveraging Appium, Genymotion, and Argo workflows, reducing 15 hours of manual work and increasing GMV by 10%</li>
+                        <li>Architected a real-time streaming pipeline that filters backend application logs, enabling the team to identify up to 50 bots</li>
+                        <li>Developed batch jobs written in Python, integrated with partner REST APIs, and scheduled via Argo workflows, successfully deploying seven pipelines to production</li>
+                    </ul>
+                </div>
 
-                    <div class="experience-item reveal">
-                        <h3>Data Testing Specialist</h3>
-                        <div class="experience-meta">IBM • May 2020 - Sep 2021</div>
-                        <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
-                            <li>Served as part of the data testing team with Fintech and Telecom clients in EMEA</li>
-                            <li>Analyzed and validated records exceeding 100 million on a daily basis to ensure data quality and integrity</li>
-                            <li>Managed data warehouse infrastructure and operations for Jazz (Veon Group)</li>
-                        </ul>
-                    </div>
+                <div class="experience-item reveal">
+                    <h3>Data Testing Specialist</h3>
+                    <div class="experience-meta">IBM • May 2020 - Sep 2021</div>
+                    <ul style="color: var(--text-secondary); line-height: 1.7; margin-left: 20px;">
+                        <li>Served as part of the data testing team with Fintech and Telecom clients in EMEA</li>
+                        <li>Analyzed and validated records exceeding 100 million on a daily basis to ensure data quality and integrity</li>
+                        <li>Managed data warehouse infrastructure and operations for Jazz (Veon Group)</li>
+                    </ul>
+                </div>
 
-                    <div class="experience-item reveal">
-                        <h3>Trainee Engineer</h3>
-                        <div class="experience-meta">Zong CMPak (China Mobile) • June 2019 - Apr 2020</div>
-                        <p>
-                            Contributed to the BSS operations team at China Mobile, collaborating directly
-                            with business stakeholders to gather and analyze data requirements. Built
-                            comprehensive analyses and interactive dashboards to support operational
-                            decision-making and business intelligence initiatives.
-                        </p>
-                    </div>
+                <div class="experience-item reveal">
+                    <h3>Trainee Engineer</h3>
+                    <div class="experience-meta">Zong CMPak (China Mobile) • June 2019 - Apr 2020</div>
+                    <p>
+                        Contributed to the BSS operations team at China Mobile, collaborating directly
+                        with business stakeholders to gather and analyze data requirements. Built
+                        comprehensive analyses and interactive dashboards to support operational
+                        decision-making and business intelligence initiatives.
+                    </p>
                 </div>
             </div>
+        </div>
 
-            <!-- Contact Page -->
-            <div id="contact" class="page">
-                <h2>Let's Connect</h2>
-                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 700px; margin-bottom: 48px;">
-                    Based in Utrecht, Netherlands. Always up for discussing data engineering challenges, exploring collaboration
-                    opportunities, grabbing coffee, going for a run, or talking football with a fellow Arsenal fan.
-                </p>
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <h2>Let's Connect</h2>
+            <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 700px; margin-bottom: 48px;">
+                Based in Utrecht, Netherlands. Always up for discussing data engineering challenges, exploring collaboration
+                opportunities, grabbing coffee, going for a run, or talking football with a fellow Arsenal fan.
+            </p>
 
-                <div class="contact-grid">
-                    <a href="mailto:zhnemati@gmail.com" class="contact-link">
-                        <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                        <span>Email</span>
-                    </a>
+            <div class="contact-grid">
+                <a href="mailto:zhnemati@gmail.com" class="contact-link">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span>Email</span>
+                </a>
 
-                    <a href="https://github.com/zhnemati" target="_blank" class="contact-link">
-                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
+                <a href="https://github.com/zhnemati" target="_blank" class="contact-link">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
 
-                    <a href="https://www.linkedin.com/in/zain-nemati-427033148/" target="_blank" class="contact-link">
-                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                        <span>LinkedIn</span>
-                    </a>
+                <a href="https://www.linkedin.com/in/zain-nemati-427033148/" target="_blank" class="contact-link">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
 
-                    <a href="tel:+31684448566" class="contact-link">
-                        <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        <span>Phone</span>
-                    </a>
+                <a href="tel:+31684448566" class="contact-link">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span>Phone</span>
+                </a>
 
-                    <a href="https://medium.com/@zhaider" target="_blank" class="contact-link">
-                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                        </svg>
-                        <span>Medium Blog</span>
-                    </a>
-                </div>
+                <a href="https://medium.com/@zhaider" target="_blank" class="contact-link">
+                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                    </svg>
+                    <span>Medium Blog</span>
+                </a>
             </div>
-        </main>
+        </div>
+    </main>
 
-        <footer>
-            <p>© 2025 Zain Nemati. Barely works. Still shipped.</p>
-        </footer>
-    </div>
+    <footer>
+        <p>© 2025 Zain Nemati. Barely works. Still shipped.</p>
+    </footer>
+</div>
 
-    <script>
-        // Navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pages = document.querySelectorAll('.page');
+<script>
+    // Navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetPage = link.dataset.page;
-                
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                
-                pages.forEach(page => {
-                    if (page.id === targetPage) {
-                        page.classList.add('active');
-                        // Re-trigger reveal animations
-                        setTimeout(() => {
-                            revealOnScroll();
-                        }, 100);
-                    } else {
-                        page.classList.remove('active');
-                    }
-                });
-                
-                window.history.pushState({}, '', `#${targetPage}`);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetPage = link.dataset.page;
 
-        // Scroll reveal animations
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('active');
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            pages.forEach(page => {
+                if (page.id === targetPage) {
+                    page.classList.add('active');
+                    // Re-trigger reveal animations
+                    setTimeout(() => {
+                        revealOnScroll();
+                    }, 100);
+                } else {
+                    page.classList.remove('active');
                 }
             });
-        }
 
-        window.addEventListener('scroll', revealOnScroll);
-        
-        // Initial reveal
-        setTimeout(revealOnScroll, 100);
-
-        // Handle browser back/forward
-        window.addEventListener('popstate', () => {
-            const hash = window.location.hash.slice(1) || 'about';
-            const link = document.querySelector(`[data-page="${hash}"]`);
-            if (link) link.click();
+            window.history.pushState({}, '', `#${targetPage}`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    });
 
-        // Handle initial page load with hash
-        if (window.location.hash) {
-            const hash = window.location.hash.slice(1);
-            const link = document.querySelector(`[data-page="${hash}"]`);
-            if (link) {
-                setTimeout(() => link.click(), 100);
+    // Scroll reveal animations
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('active');
             }
+        });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Initial reveal
+    setTimeout(revealOnScroll, 100);
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', () => {
+        const hash = window.location.hash.slice(1) || 'about';
+        const link = document.querySelector(`[data-page="${hash}"]`);
+        if (link) link.click();
+    });
+
+    // Handle initial page load with hash
+    if (window.location.hash) {
+        const hash = window.location.hash.slice(1);
+        const link = document.querySelector(`[data-page="${hash}"]`);
+        if (link) {
+            setTimeout(() => link.click(), 100);
         }
-    </script>
+    }
+</script>
 </body>
 </html>
