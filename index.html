@@ -907,4 +907,11 @@
     // Handle initial page load with hash
     if (window.location.hash) {
         const hash = window.location.hash.slice(1);
-        const link = document.querySelector(`[data-p
+        const link = document.querySelector(`[data-page="${hash}"]`);
+        if (link) {
+            setTimeout(() => link.click(), 100);
+        }
+    }
+</script>
+</body>
+</html>
