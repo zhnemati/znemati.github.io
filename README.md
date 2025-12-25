@@ -8,20 +8,6 @@ Personal portfolio website showcasing my work as a Data Engineer.
 
 This is my personal portfolio highlighting my experience in data engineering, real-time streaming systems, and scalable data infrastructure. I specialize in building reliable data systems using Apache Flink, Kafka, BigQuery, and modern data stack technologies.
 
-
-## Sections
-
-- **About**: Personal introduction and technical skills
-- **Experience**: Professional work history
-- **Contact**: Ways to connect with me
-
-## Contact
-
-- Email: zhnemati@gmail.com
-- GitHub: [@zhnemati](https://github.com/zhnemati)
-- LinkedIn: [Zain Nemati](https://www.linkedin.com/in/zain-nemati-427033148/)
-- Medium: [@zhaider](https://medium.com/@zhaider)
-
 ---
 
 Barely works. Find a bug and get a caramel candy
