@@ -24,4 +24,4 @@ This is my personal portfolio highlighting my experience in data engineering, re
 
 ---
 
-Built with care. Based in Utrecht, Netherlands.
+Barely works. Find a bug and get a caramel candy
