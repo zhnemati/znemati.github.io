@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain Nemati - Data Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #14141f;
+            --text: #e8e8f0;
+            --text-secondary: #9898b0;
+            --accent-blue: #4d9fff;
+            --accent-purple: #a855f7;
+            --accent-cyan: #06b6d4;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(77, 159, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        /* Grain texture overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header with glass morphism */
+        header {
+            position: sticky;
+            top: 0;
+            padding: 24px 0;
+            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 15, 0.7);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+            animation: fadeIn 0.8s ease 0.2s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav {
+            display: flex;
+            gap: 48px;
+            animation: fadeIn 0.8s ease 0.4s backwards;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            font-family: 'Sora', sans-serif;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--text);
+        }
+
+        /* Main Content */
+        main {
+            min-height: 80vh;
+            padding: 80px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 120px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-cyan));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 8s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 20px;
+            animation: fadeInUp 0.8s ease 1s backwards;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 20px rgba(77, 159, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(77, 159, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            background: rgba(77, 159, 255, 0.1);
+        }
+
+        /* Section Titles */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 64px;
+            letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), transparent);
+        }
+
+        /* Project Cards with glass morphism */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(77, 159, 255, 0.05), rgba(168, 85, 247, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 60px rgba(77, 159, 255, 0.2);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tag {
+            padding: 6px 16px;
+            background: rgba(77, 159, 255, 0.1);
+            border: 1px solid rgba(77, 159, 255, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            margin-top: 64px;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 60px;
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -50px;
+            top: 40px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 0 4px rgba(77, 159, 255, 0.2);
+        }
+
+        .experience-item:hover {
+            transform: translateX(8px);
+            border-color: var(--accent-blue);
+        }
+
+        .experience-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .experience-meta {
+            color: var(--accent-blue);
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .experience-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            background: rgba(77, 159, 255, 0.05);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 120px;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Page transitions */
+        .page {
+            display: none;
+            animation: pageIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            nav {
+                gap: 24px;
+                font-size: 14px;
+            }
+
+            .hero {
+                margin-bottom: 80px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 40px;
+            }
+
+            .experience-timeline::before {
+                left: 10px;
+            }
+
+            .experience-item::before {
+                left: -40px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="site-title">Zain Nemati</div>
+                <nav>
+                    <a href="#about" class="nav-link active" data-page="about">About</a>
+                    <a href="#projects" class="nav-link" data-page="projects">Projects</a>
+                    <a href="#experience" class="nav-link" data-page="experience">Experience</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- About Page -->
+            <div id="about" class="page active">
+                <section class="hero">
+                    <h1>
+                        Building the <br>
+                        <span class="gradient-text">Future of Data</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        I architect scalable data infrastructure and engineer elegant solutions 
+                        to complex problems. Transforming raw data into strategic insights through 
+                        cutting-edge technology and meticulous optimization.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary nav-link" data-page="projects">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">Get In Touch</a>
+                    </div>
+                </section>
+
+                <section class="reveal">
+                    <h2>About Me</h2>
+                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px;">
+                        With a passion for building robust data systems, I specialize in BigQuery optimization, 
+                        dbt workflows, and modern data stack technologies. My approach combines technical 
+                        precision with creative problem-solving, always seeking the elegant solution that 
+                        balances performance, maintainability, and scalability.
+                    </p>
+                    <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 800px; margin-top: 24px;">
+                        When I'm not engineering data pipelines, you'll find me pushing my limits with 
+                        cardio workouts or exploring the latest developments in data technology and 
+                        cloud infrastructure.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Projects Page -->
+            <div id="projects" class="page">
+                <h2>Featured Projects</h2>
+                
+                <div class="project-grid">
+                    <div class="project-card reveal">
+                        <span class="project-number">01</span>
+                        <h3>Marketing Analytics Platform</h3>
+                        <p>
+                            Engineered a comprehensive marketing channel attribution system leveraging 
+                            BigQuery views with intelligent result caching. Achieved 70% query performance 
+                            improvement while maintaining granular expense tracking across diverse data sources.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">BigQuery</span>
+                            <span class="tech-tag">dbt</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Data Modeling</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <span class="project-number">02</span>
+                        <h3>Real-time Data Pipeline</h3>
+                        <p>
+                            Architected and deployed a high-throughput streaming pipeline processing 
+                            10M+ events daily. Reduced end-to-end latency by 60% through strategic 
+                            microservices design and advanced caching strategies.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Apache Kafka</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <span class="project-number">03</span>
+                        <h3>Data Quality Framework</h3>
+                        <p>
+                            Developed an intelligent data quality monitoring system with automated 
+                            anomaly detection and real-time alerting. Reduced data incidents by 85% 
+                            and improved cross-team data reliability organization-wide.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Great Expectations</span>
+                            <span class="tech-tag">Airflow</span>
+                            <span class="tech-tag">Slack API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Page -->
+            <div id="experience" class="page">
+                <h2>Experience</h2>
+                
+                <div class="experience-timeline">
+                    <div class="experience-item reveal">
+                        <h3>Senior Data Engineer</h3>
+                        <div class="experience-meta">Tech Company • 2022 - Present</div>
+                        <p>
+                            Leading data infrastructure initiatives and architecting enterprise-scale 
+                            solutions for multi-petabyte data processing. Spearheading BigQuery optimization 
+                            efforts, designing sophisticated dbt models, and building resilient pipelines 
+                            that power analytics and machine learning at scale.
+                        </p>
+                    </div>
+
+                    <div class="experience-item reveal">
+                        <h3>Data Engineer</h3>
+                        <div class="experience-meta">Growing Startup • 2020 - 2022</div>
+                        <p>
+                            Architected and maintained mission-critical ETL pipelines processing terabytes 
+                            daily. Pioneered performance optimization strategies that reduced compute costs 
+                            by 40%. Collaborated closely with data scientists and analysts to ensure 
+                            impeccable data quality and availability.
+                        </p>
+                    </div>
+
+                    <div class="experience-item reveal">
+                        <h3>Junior Data Engineer</h3>
+                        <div class="experience-meta">Established Firm • 2018 - 2020</div>
+                        <p>
+                            Built foundational data infrastructure and automated reporting systems from 
+                            the ground up. Developed expertise in SQL, Python, and cloud data warehouses 
+                            while supporting critical business intelligence initiatives and establishing 
+                            data governance best practices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Page -->
+            <div id="contact" class="page">
+                <h2>Let's Connect</h2>
+                <p style="font-size: 20px; line-height: 1.8; color: var(--text-secondary); max-width: 700px; margin-bottom: 48px;">
+                    I'm always excited to discuss data engineering challenges, explore collaboration 
+                    opportunities, or simply connect with fellow engineers and innovators in the space.
+                </p>
+                
+                <div class="contact-grid">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                    
+                    <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    
+                    <a href="https://twitter.com/yourusername" target="_blank" class="contact-link">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                        <span>Twitter</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Zain Nemati. Crafted with precision and passion.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.dataset.page;
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                pages.forEach(page => {
+                    if (page.id === targetPage) {
+                        page.classList.add('active');
+                        // Re-trigger reveal animations
+                        setTimeout(() => {
+                            revealOnScroll();
+                        }, 100);
+                    } else {
+                        page.classList.remove('active');
+                    }
+                });
+                
+                window.history.pushState({}, '', `#${targetPage}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Scroll reveal animations
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Initial reveal
+        setTimeout(revealOnScroll, 100);
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.slice(1) || 'about';
+            const link = document.querySelector(`[data-page="${hash}"]`);
+            if (link) link.click();
+        });
+
+        // Handle initial page load with hash
+        if (window.location.hash) {
+            const hash = window.location.hash.slice(1);
+            const link = document.querySelector(`[data-page="${hash}"]`);
+            if (link) {
+                setTimeout(() => link.click(), 100);
+            }
+        }
+    </script>
+</body>
+</html>
