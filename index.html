@@ -112,7 +112,7 @@
 
         .site-title {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text;
@@ -182,7 +182,7 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 8vw, 96px);
+            font-size: clamp(36px, 6vw, 72px);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 32px;
@@ -555,7 +555,7 @@
             }
 
             .site-title {
-                font-size: 26px;
+                font-size: 30px;
             }
 
             nav {
@@ -807,7 +807,7 @@
             </p>
 
             <div class="contact-grid">
-                <a href="mailto:zhnemati@gmail.com" class="contact-link">
+                <a href="/cdn-cgi/l/email-protection#9ae0f2f4fff7fbeef3dafdf7fbf3f6b4f9f5f7" class="contact-link">
                     <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
@@ -850,7 +850,7 @@
     </footer>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Navigation
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
@@ -907,11 +907,4 @@
     // Handle initial page load with hash
     if (window.location.hash) {
         const hash = window.location.hash.slice(1);
-        const link = document.querySelector(`[data-page="${hash}"]`);
-        if (link) {
-            setTimeout(() => link.click(), 100);
-        }
-    }
-</script>
-</body>
-</html>
+        const link = document.querySelector(`[data-p
